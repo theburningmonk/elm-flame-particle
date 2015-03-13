@@ -1,5 +1,6 @@
-var Elm = Elm || { Native: {} };
-Elm.Basics = Elm.Basics || {};
+<!DOCTYPE HTML>
+<html><head><meta charset="UTF-8"><title>Main</title><style>html,head,body { padding:0; margin:0; }
+body { font-family: calibri, helvetica, arial, sans-serif; }</style><script type="text/javascript">var Elm = Elm || { Native: {} };Elm.Basics = Elm.Basics || {};
 Elm.Basics.make = function (_elm) {
    "use strict";
    _elm.Basics = _elm.Basics || {};
@@ -177,8 +178,7 @@ Elm.Basics.make = function (_elm) {
                         ,EQ: EQ
                         ,GT: GT};
    return _elm.Basics.values;
-};
-Elm.Color = Elm.Color || {};
+};Elm.Color = Elm.Color || {};
 Elm.Color.make = function (_elm) {
    "use strict";
    _elm.Color = _elm.Color || {};
@@ -636,8 +636,7 @@ Elm.Color.make = function (_elm) {
                        ,charcoal: charcoal
                        ,darkCharcoal: darkCharcoal};
    return _elm.Color.values;
-};
-Elm.Debug = Elm.Debug || {};
+};Elm.Debug = Elm.Debug || {};
 Elm.Debug.make = function (_elm) {
    "use strict";
    _elm.Debug = _elm.Debug || {};
@@ -663,8 +662,7 @@ Elm.Debug.make = function (_elm) {
                        ,watchSummary: watchSummary
                        ,trace: trace};
    return _elm.Debug.values;
-};
-Elm.Graphics = Elm.Graphics || {};
+};Elm.Graphics = Elm.Graphics || {};
 Elm.Graphics.Collage = Elm.Graphics.Collage || {};
 Elm.Graphics.Collage.make = function (_elm) {
    "use strict";
@@ -1010,8 +1008,7 @@ Elm.Graphics.Collage.make = function (_elm) {
                                   ,circle: circle
                                   ,ngon: ngon};
    return _elm.Graphics.Collage.values;
-};
-Elm.Graphics = Elm.Graphics || {};
+};Elm.Graphics = Elm.Graphics || {};
 Elm.Graphics.Element = Elm.Graphics.Element || {};
 Elm.Graphics.Element.make = function (_elm) {
    "use strict";
@@ -1561,8 +1558,7 @@ Elm.Graphics.Element.make = function (_elm) {
                                   ,inward: inward
                                   ,outward: outward};
    return _elm.Graphics.Element.values;
-};
-Elm.List = Elm.List || {};
+};Elm.List = Elm.List || {};
 Elm.List.make = function (_elm) {
    "use strict";
    _elm.List = _elm.List || {};
@@ -1793,8 +1789,7 @@ Elm.List.make = function (_elm) {
                       ,sortBy: sortBy
                       ,sortWith: sortWith};
    return _elm.List.values;
-};
-Elm.Main = Elm.Main || {};
+};Elm.Main = Elm.Main || {};
 Elm.Main.make = function (_elm) {
    "use strict";
    _elm.Main = _elm.Main || {};
@@ -2128,8 +2123,7 @@ Elm.Main.make = function (_elm) {
                       ,generate: generate
                       ,makeParticle: makeParticle};
    return _elm.Main.values;
-};
-Elm.Maybe = Elm.Maybe || {};
+};Elm.Maybe = Elm.Maybe || {};
 Elm.Maybe.make = function (_elm) {
    "use strict";
    _elm.Maybe = _elm.Maybe || {};
@@ -2203,7 +2197,6 @@ Elm.Maybe.make = function (_elm) {
                        ,Nothing: Nothing};
    return _elm.Maybe.values;
 };
-
 Elm.Native.Basics = {};
 Elm.Native.Basics.make = function(elm) {
   elm.Native = elm.Native || {};
@@ -2321,7 +2314,6 @@ Elm.Native.Basics.make = function(elm) {
 
   return elm.Native.Basics.values = basics;
 };
-
 Elm.Native.Color = {};
 Elm.Native.Color.make = function(elm) {
     elm.Native = elm.Native || {};
@@ -2352,7 +2344,6 @@ Elm.Native.Color.make = function(elm) {
     };
 
 };
-
 Elm.Native.Debug = {};
 Elm.Native.Debug.make = function(elm) {
     elm.Native = elm.Native || {};
@@ -2416,7 +2407,6 @@ Elm.Native.Debug.make = function(elm) {
         watchSummary:F3(watchSummary),
     };
 };
-
 
 // setup
 Elm.Native = Elm.Native || {};
@@ -2835,7 +2825,6 @@ Elm.Native.Graphics.Collage.make = function(localRuntime) {
         collage:F3(collage)
     };
 };
-
 
 // setup
 Elm.Native = Elm.Native || {};
@@ -3354,7 +3343,6 @@ Elm.Native.Graphics.Element.make = function(localRuntime) {
     };
 
 };
-
 Elm.Native.List = {};
 Elm.Native.List.make = function(elm) {
     elm.Native = elm.Native || {};
@@ -3660,7 +3648,6 @@ Elm.Native.List.make = function(elm) {
     return elm.Native.List.values = Elm.Native.List.values;
 
 };
-
 Elm.Native.Ports = {};
 Elm.Native.Ports.make = function(localRuntime) {
     localRuntime.Native = localRuntime.Native || {};
@@ -3752,7 +3739,6 @@ Elm.Native.Ports.make = function(localRuntime) {
         portIn: portIn
     };
 };
-
 
 
 if (!Elm.fullscreen) {
@@ -4323,8 +4309,7 @@ if (!Elm.fullscreen) {
             ? fun.func(a,b,c,d,e,f,g,h,i)
             : fun(a)(b)(c)(d)(e)(f)(g)(h)(i);
     }
-}
-Elm.Native.Show = {};
+}Elm.Native.Show = {};
 Elm.Native.Show.make = function(elm) {
     elm.Native = elm.Native || {};
     elm.Native.Show = elm.Native.Show || {};
@@ -4480,7 +4465,6 @@ Elm.Native.Show.make = function(elm) {
         toString: toString
     };
 };
-
 
 Elm.Native.Signal = {};
 Elm.Native.Signal.make = function(localRuntime) {
@@ -4716,7 +4700,6 @@ Elm.Native.Signal.make = function(localRuntime) {
     subscribe: subscribe
   };
 };
-
 Elm.Native.Text = {};
 Elm.Native.Text.make = function(elm) {
     elm.Native = elm.Native || {};
@@ -4888,7 +4871,6 @@ Elm.Native.Text.make = function(elm) {
         toLine:toLine
     };
 };
-
 Elm.Native.Time = {};
 Elm.Native.Time.make = function(elm) {
 
@@ -4953,7 +4935,6 @@ Elm.Native.Time.make = function(elm) {
   };
 
 };
-
 Elm.Native.Transform2D = {};
 Elm.Native.Transform2D.make = function(elm) {
 
@@ -5053,7 +5034,6 @@ Elm.Native.Transform2D.make = function(elm) {
  };
 
 };
-
 Elm.Native = Elm.Native || {};
 Elm.Native.Utils = {};
 Elm.Native.Utils.make = function(localRuntime) {
@@ -5359,7 +5339,6 @@ Elm.Native.Utils.make = function(localRuntime) {
         badPort: badPort
     };
 };
-
 Elm.Native = Elm.Native || {};
 Elm.Native.Window = {};
 Elm.Native.Window.make = function(localRuntime) {
@@ -5422,7 +5401,6 @@ Elm.Native.Window.make = function(localRuntime) {
     };
 
 };
-
 Elm.Random = Elm.Random || {};
 Elm.Random.make = function (_elm) {
    "use strict";
@@ -5708,8 +5686,7 @@ Elm.Random.make = function (_elm) {
                         ,customGenerator: customGenerator
                         ,Seed: Seed};
    return _elm.Random.values;
-};
-Elm.Result = Elm.Result || {};
+};Elm.Result = Elm.Result || {};
 Elm.Result.make = function (_elm) {
    "use strict";
    _elm.Result = _elm.Result || {};
@@ -5953,8 +5930,7 @@ Elm.Result.make = function (_elm) {
                         ,toMaybe: toMaybe
                         ,fromMaybe: fromMaybe};
    return _elm.Result.values;
-};
-Elm.Signal = Elm.Signal || {};
+};Elm.Signal = Elm.Signal || {};
 Elm.Signal.make = function (_elm) {
    "use strict";
    _elm.Signal = _elm.Signal || {};
@@ -6053,8 +6029,7 @@ Elm.Signal.make = function (_elm) {
                         ,send: send
                         ,subscribe: subscribe};
    return _elm.Signal.values;
-};
-Elm.Text = Elm.Text || {};
+};Elm.Text = Elm.Text || {};
 Elm.Text.make = function (_elm) {
    "use strict";
    _elm.Text = _elm.Text || {};
@@ -6161,8 +6136,7 @@ Elm.Text.make = function (_elm) {
                       ,markdown: markdown
                       ,asText: asText};
    return _elm.Text.values;
-};
-Elm.Time = Elm.Time || {};
+};Elm.Time = Elm.Time || {};
 Elm.Time.make = function (_elm) {
    "use strict";
    _elm.Time = _elm.Time || {};
@@ -6235,8 +6209,7 @@ Elm.Time.make = function (_elm) {
                       ,timestamp: timestamp
                       ,delay: delay};
    return _elm.Time.values;
-};
-Elm.Transform2D = Elm.Transform2D || {};
+};Elm.Transform2D = Elm.Transform2D || {};
 Elm.Transform2D.make = function (_elm) {
    "use strict";
    _elm.Transform2D = _elm.Transform2D || {};
@@ -6301,8 +6274,7 @@ Elm.Transform2D.make = function (_elm) {
                              ,scaleX: scaleX
                              ,scaleY: scaleY};
    return _elm.Transform2D.values;
-};
-Elm.Window = Elm.Window || {};
+};Elm.Window = Elm.Window || {};
 Elm.Window.make = function (_elm) {
    "use strict";
    _elm.Window = _elm.Window || {};
@@ -6324,4 +6296,4 @@ Elm.Window.make = function (_elm) {
                         ,width: width
                         ,height: height};
    return _elm.Window.values;
-};
+};</script></head><body><script type="text/javascript">Elm.fullscreen(Elm.Main)</script></body></html>
