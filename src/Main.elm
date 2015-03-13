@@ -11,7 +11,7 @@ import Window
 import Debug
 
 ticks : Signal Float
-ticks = Signal.foldp (\_ n -> n + 1) 0 (Time.fps 10)
+ticks = Signal.foldp (\_ n -> n + 1) 0 (Time.fps 12)
 
 type alias Particle = {x:Float, y:Float, radius:Float, color:Color, seed:Float, t:Int}
 type alias State = {particles:List Particle, seed:Random.Seed}
@@ -53,8 +53,8 @@ update state =
     state.particles |> List.map (\p -> 
       let {red, green, blue, alpha} = toRgb p.color
           newR = red   + (sin (toFloat p.t * p.seed) |> (*) 40 |> floor)
-          newG = green + (sin (toFloat p.t * p.seed) |> (*) 33 |> floor)
-          newB = blue  + (sin (toFloat p.t * p.seed) |> (*) 15 |> floor)
+          newG = green + (sin (toFloat p.t * p.seed) |> (*) 30 |> floor)
+          newB = blue
           newA = (alpha - 0.014 * p.seed) * 0.97
           newColor = rgba newR newG newB newA
       in {p | x <- p.x - sin (toFloat p.t * 0.386),
@@ -66,41 +66,44 @@ update state =
 
 spawn : Float -> State -> State
 spawn t state =
-    --case n of
-    --    0 -> 
-          let newParticles = List.append (floor t |> genParticles) state.particles
-          in {state | particles<-newParticles}
-    --    n -> 
-    --      let (newParticle, newSeed) = makeParticle state.seed
-    --      in spawn 0 {state | particles<-newParticle::state.particles
-    --                        , seed     <-newSeed}
+    let newParticles = floor t |> genParticles
+        (n, seed) = Random.generate (Random.int 1 5) state.seed
+        (randParticles, newSeed) = 
+            List.foldl 
+                (\_ (acc, seed') -> 
+                    let (newP, newSeed) = makeParticle seed'
+                    in (newP::acc, newSeed))
+                ([], seed) 
+                [1..n]
+    in {state | particles<-List.concat [newParticles, randParticles, state.particles]
+              , seed     <-newSeed}
 
 makeParticle : Random.Seed -> (Particle, Random.Seed)
 makeParticle seed =
-    let (x, seed1) = Random.generate (Random.float -20 20) seed
-        (y, seed2) = Random.generate (Random.float -10 10) seed1
-        (r, seed3) = Random.generate (Random.int 200 255)  seed2
-        (g, seed4) = Random.generate (Random.int 30 100)   seed3
-        (b, seed5) = Random.generate (Random.int 10 70)    seed4
-        (alpha,  seed6) = Random.generate (Random.float 0 1) seed5
-        (radius, seed7) = Random.generate (Random.int 4 8)   seed6
-        (pSeed,  seed8) = Random.generate (Random.float 0 1) seed7
+    let (x, seed1) = Random.generate (Random.float -8 8) seed
+        (y, seed2) = Random.generate (Random.float -3 3) seed1
+        (r, seed3) = Random.generate (Random.int 188 255) seed2
+        (g, seed4) = Random.generate (Random.int 30 80) seed3
+        (b, seed5) = Random.generate (Random.int 10 50)  seed4
+        (alpha,  seed6) = Random.generate (Random.float 0.2 0.8) seed5
+        (radius, seed7) = Random.generate (Random.int 1 5) seed6
+        (pSeed,  seed8) = Random.generate (Random.float 0.1 1) seed7
 
         particle = { x=x, y=y, radius=5,
                      color=rgba r g b alpha,
                      seed=pSeed,
-                     t=42 }
+                     t=0 }
     in (particle, seed8)
 
 genParticles : Int -> List Particle
 genParticles t =
     [
-      {x=-3,  y=2,  radius=5, color=rgba 255 40 10 0.86,  seed=0.5, t=9},
+      {x=-3,  y=2,  radius=6, color=rgba 255 10 10 0.86,  seed=0.05, t=9},
       {x=2,   y=2,  radius=5, color=rgba 155 73 10 0.86,  seed=0.5, t=4},
-      {x=-1,  y=1,  radius=5, color=rgba 255 128 51 0.86, seed=(toFloat t |> sin) * 0.9, t=t%10},
+      {x=-1,  y=1,  radius=5, color=rgba 255 128 51 0.86, seed=(t |> toFloat |> sin) * 0.9, t=t%10},
       {x=-2,  y=0,  radius=5, color=rgba 111 40 40 0.74,  seed=0.714, t=9},
-      {x=1,   y=0,  radius=5, color=rgba 170 83 32 0.86,  seed=0.4 + (toFloat t |> sin) * 0.362, t=t%3},
-      {x=0.7, y=1,  radius=5, color=rgba 168 83 5 0.98,  seed=0.4, t=t%4},
+      {x=1,   y=0,  radius=5, color=rgba 170 83 32 0.86,  seed=0.4 + (t |> toFloat |> sin) * 0.362, t=t%3},
+      {x=0.7, y=1,  radius=5, color=rgba 168 83 5 0.98,  seed=0.8, t=t%4},
       {x=1,   y=0,  radius=5, color=rgba 177 72 17 0.85, seed=1.154, t=0},
-      {x=-0.5, y=1, radius=5, color=rgba 189 20 17 0.85, seed=0.6, t=3}
+      {x=-0.5, y=1, radius=5, color=rgba 189 20 17 0.85, seed=0.05, t=3}
     ]
