@@ -1816,104 +1816,6 @@ Elm.Main.make = function (_elm) {
    $Signal = Elm.Signal.make(_elm),
    $Time = Elm.Time.make(_elm),
    $Window = Elm.Window.make(_elm);
-   var prune = function (state) {
-      return $List.filter(function (p) {
-         return function () {
-            var $ = $Color.toRgb(p.color),
-            red = $.red,
-            green = $.green,
-            blue = $.blue,
-            alpha = $.alpha;
-            return _U.cmp(alpha,
-            0) > 0 && _U.cmp(p.radius,
-            0) > 0;
-         }();
-      })(state);
-   };
-   var display = F2(function (_v0,
-   state) {
-      return function () {
-         switch (_v0.ctor)
-         {case "_Tuple2":
-            return function () {
-                 var content = $List.map(function (p) {
-                    return $Graphics$Collage.move({ctor: "_Tuple2"
-                                                  ,_0: p.x
-                                                  ,_1: p.y})($Graphics$Collage.filled(p.color)($Graphics$Collage.circle(p.radius)));
-                 })($Debug.watch("State")(state));
-                 var background = $Graphics$Collage.filled($Color.black)(A2($Graphics$Collage.rect,
-                 $Basics.toFloat(_v0._0),
-                 $Basics.toFloat(_v0._1)));
-                 return A3($Graphics$Collage.collage,
-                 _v0._0,
-                 _v0._1,
-                 A2($List._op["::"],
-                 background,
-                 content));
-              }();}
-         _U.badCase($moduleName,
-         "between lines 31 and 39");
-      }();
-   });
-   var defaultState = _L.fromArray([]);
-   var Particle = F5(function (a,
-   b,
-   c,
-   d,
-   e) {
-      return {_: {}
-             ,color: d
-             ,radius: c
-             ,seed: e
-             ,x: a
-             ,y: b};
-   });
-   var ticks = A3($Signal.foldp,
-   F2(function (_v4,n) {
-      return function () {
-         return n + 1;
-      }();
-   }),
-   0,
-   $Time.fps(10));
-   var initRadius = 5;
-   var update = F2(function (t,
-   state) {
-      return $List.map(function (p) {
-         return function () {
-            var $ = $Color.toRgb(p.color),
-            red = $.red,
-            green = $.green,
-            blue = $.blue,
-            alpha = $.alpha;
-            var newR = red + $Basics.floor(F2(function (x,
-            y) {
-               return x * y;
-            })(40)($Basics.sin(t * p.seed)));
-            var newG = green + $Basics.floor(F2(function (x,
-            y) {
-               return x * y;
-            })(33)($Basics.sin(t * p.seed)));
-            var newB = blue + $Basics.floor(F2(function (x,
-            y) {
-               return x * y;
-            })(15)($Basics.sin(t * p.seed)));
-            var newA = (alpha - 1.8e-2 * p.seed) * 0.97;
-            var newColor = A4($Color.rgba,
-            newR,
-            newG,
-            newB,
-            newA);
-            return _U.replace([["x"
-                               ,p.x - $Basics.sin(t * 0.436)]
-                              ,["y",p.y + 1]
-                              ,["radius"
-                               ,initRadius - t * 3.0e-2]
-                              ,["color",newColor]],
-            p);
-         }();
-      })(state);
-   });
    var makeParticle = function (n) {
       return function () {
          var seed = $Random.initialSeed(n);
@@ -1935,7 +1837,7 @@ Elm.Main.make = function (_elm) {
                       break;}
                  break;}
             _U.badCase($moduleName,
-            "on line 73, column 29 to 87");
+            "on line 71, column 29 to 87");
          }();
          var x = function () {
             switch (_.ctor)
@@ -1950,7 +1852,7 @@ Elm.Main.make = function (_elm) {
                       break;}
                  break;}
             _U.badCase($moduleName,
-            "on line 73, column 29 to 87");
+            "on line 71, column 29 to 87");
          }();
          var y = function () {
             switch (_.ctor)
@@ -1965,12 +1867,12 @@ Elm.Main.make = function (_elm) {
                       break;}
                  break;}
             _U.badCase($moduleName,
-            "on line 73, column 29 to 87");
+            "on line 71, column 29 to 87");
          }();
          var _ = A2($Random.generate,
          A2($Random.list,
          1,
-         A2($Random.$int,150,255)),
+         A2($Random.$int,175,255)),
          seed$);
          var r = function () {
             switch (_.ctor)
@@ -1982,7 +1884,7 @@ Elm.Main.make = function (_elm) {
                       break;}
                  break;}
             _U.badCase($moduleName,
-            "on line 74, column 29 to 87");
+            "on line 72, column 29 to 87");
          }();
          var seed$$ = function () {
             switch (_.ctor)
@@ -1994,12 +1896,12 @@ Elm.Main.make = function (_elm) {
                       break;}
                  break;}
             _U.badCase($moduleName,
-            "on line 74, column 29 to 87");
+            "on line 72, column 29 to 87");
          }();
          var _ = A2($Random.generate,
          A2($Random.list,
          2,
-         A2($Random.$int,1,120)),
+         A2($Random.$int,1,100)),
          seed$$);
          var b = function () {
             switch (_.ctor)
@@ -2014,7 +1916,7 @@ Elm.Main.make = function (_elm) {
                       break;}
                  break;}
             _U.badCase($moduleName,
-            "on line 75, column 29 to 86");
+            "on line 73, column 29 to 86");
          }();
          var g = function () {
             switch (_.ctor)
@@ -2029,7 +1931,7 @@ Elm.Main.make = function (_elm) {
                       break;}
                  break;}
             _U.badCase($moduleName,
-            "on line 75, column 29 to 86");
+            "on line 73, column 29 to 86");
          }();
          var seed$$$ = function () {
             switch (_.ctor)
@@ -2044,7 +1946,7 @@ Elm.Main.make = function (_elm) {
                       break;}
                  break;}
             _U.badCase($moduleName,
-            "on line 75, column 29 to 86");
+            "on line 73, column 29 to 86");
          }();
          var _ = A2($Random.generate,
          A2($Random.list,
@@ -2064,7 +1966,7 @@ Elm.Main.make = function (_elm) {
                       break;}
                  break;}
             _U.badCase($moduleName,
-            "on line 76, column 31 to 89");
+            "on line 74, column 31 to 89");
          }();
          var pSeed = function () {
             switch (_.ctor)
@@ -2079,7 +1981,7 @@ Elm.Main.make = function (_elm) {
                       break;}
                  break;}
             _U.badCase($moduleName,
-            "on line 76, column 31 to 89");
+            "on line 74, column 31 to 89");
          }();
          return {_: {}
                 ,color: A4($Color.rgba,
@@ -2087,28 +1989,123 @@ Elm.Main.make = function (_elm) {
                 g,
                 b,
                 alpha)
-                ,radius: initRadius
+                ,radius: 5
                 ,seed: pSeed
                 ,x: x
                 ,y: y};
       }();
    };
-   var generate = F2(function (n,
+   var generate = F3(function (t,
+   n,
    state) {
       return function () {
          switch (n)
          {case 0: return state;}
-         return A2(generate,
+         return A3(generate,
+         t,
          n - 1,
          A2($List._op["::"],
-         makeParticle(n),
+         makeParticle($Basics.floor(t) + n),
          state));
+      }();
+   });
+   var update = F2(function (t,
+   state) {
+      return $List.map(function (p) {
+         return function () {
+            var $ = $Color.toRgb(p.color),
+            red = $.red,
+            green = $.green,
+            blue = $.blue,
+            alpha = $.alpha;
+            var newR = red + $Basics.floor(F2(function (x,
+            y) {
+               return x * y;
+            })(40)($Basics.sin(t * p.seed)));
+            var newG = green + $Basics.floor(F2(function (x,
+            y) {
+               return x * y;
+            })(33)($Basics.sin(t * p.seed)));
+            var newB = blue;
+            var newA = (alpha - 1.6e-2 * p.seed) * 0.97;
+            var newColor = A4($Color.rgba,
+            newR,
+            newG,
+            newB,
+            newA);
+            return _U.replace([["x"
+                               ,p.x - $Basics.sin(t * 0.436)]
+                              ,["y",p.y + 1]
+                              ,["radius",p.radius - 3.0e-2]
+                              ,["color",newColor]],
+            p);
+         }();
+      })(state);
+   });
+   var prune = function (state) {
+      return $List.filter(function (p) {
+         return function () {
+            var $ = $Color.toRgb(p.color),
+            red = $.red,
+            green = $.green,
+            blue = $.blue,
+            alpha = $.alpha;
+            return _U.cmp(alpha,0) > 0;
+         }();
+      })(state);
+   };
+   var display = F2(function (_v67,
+   state) {
+      return function () {
+         switch (_v67.ctor)
+         {case "_Tuple2":
+            return function () {
+                 var content = $List.map(function (p) {
+                    return $Graphics$Collage.move({ctor: "_Tuple2"
+                                                  ,_0: p.x
+                                                  ,_1: p.y})($Graphics$Collage.filled(p.color)($Graphics$Collage.circle(p.radius)));
+                 })($Debug.watch("State")(state));
+                 var background = $Graphics$Collage.filled($Color.black)(A2($Graphics$Collage.rect,
+                 $Basics.toFloat(_v67._0),
+                 $Basics.toFloat(_v67._1)));
+                 return A3($Graphics$Collage.collage,
+                 _v67._0,
+                 _v67._1,
+                 A2($List._op["::"],
+                 background,
+                 content));
+              }();}
+         _U.badCase($moduleName,
+         "between lines 29 and 37");
       }();
    });
    var step = F2(function (t,
    state) {
-      return generate(15)(update(t)(prune(state)));
+      return A2(generate,
+      t,
+      15)(update(t)(prune(state)));
    });
+   var defaultState = _L.fromArray([]);
+   var Particle = F5(function (a,
+   b,
+   c,
+   d,
+   e) {
+      return {_: {}
+             ,color: d
+             ,radius: c
+             ,seed: e
+             ,x: a
+             ,y: b};
+   });
+   var ticks = A3($Signal.foldp,
+   F2(function (_v71,n) {
+      return function () {
+         return n + 1;
+      }();
+   }),
+   0,
+   $Time.fps(8));
    var state = A3($Signal.foldp,
    step,
    defaultState,
@@ -2119,7 +2116,6 @@ Elm.Main.make = function (_elm) {
    $Window.dimensions),
    state);
    _elm.Main.values = {_op: _op
-                      ,initRadius: initRadius
                       ,ticks: ticks
                       ,Particle: Particle
                       ,defaultState: defaultState
