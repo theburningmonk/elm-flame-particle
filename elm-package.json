@@ -1,0 +1,13 @@
+{
+    "version": "1.0.0",
+    "summary": "Emulating flame in Elm using a simple particle system",
+    "repository": "https://github.com/theburningmonk/elm-flame-particle.git",
+    "license": "MIT",
+    "source-directories": [
+        "src"
+    ],
+    "exposed-modules": [],
+    "dependencies": {
+        "elm-lang/core": "1.1.1 <= v < 2.0.0"
+    }
+}
