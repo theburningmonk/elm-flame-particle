@@ -11,7 +11,7 @@ import Window
 import Debug
 
 ticks : Signal Float
-ticks = Signal.foldp (\_ n -> n + 1) 0 (Time.fps 12)
+ticks = Signal.foldp (\_ n -> n + 1) 0 (Time.fps 20)
 
 type alias Particle = {x:Float, y:Float, radius:Float, color:Color, seed:Float, t:Int}
 type alias State = {particles:List Particle, seed:Random.Seed}
@@ -52,8 +52,8 @@ update state =
   let newParticles =
     state.particles |> List.map (\p -> 
       let {red, green, blue, alpha} = toRgb p.color
-          newR = red   + (sin (toFloat p.t * p.seed) |> (*) 40 |> floor)
-          newG = green + (sin (toFloat p.t * p.seed) |> (*) 30 |> floor)
+          newR = red   + (sin (toFloat p.t * p.seed) |> (*) 50 |> floor)
+          newG = green + (sin (toFloat p.t * p.seed) |> (*) 25 |> floor)
           newB = blue
           newA = (alpha - 0.014 * p.seed) * 0.97
           newColor = rgba newR newG newB newA
@@ -98,12 +98,12 @@ makeParticle seed =
 genParticles : Int -> List Particle
 genParticles t =
     [
-      {x=-3,  y=2,  radius=6, color=rgba 255 10 10 0.86,  seed=0.05, t=6},
-      {x=2,   y=2,  radius=5, color=rgba 155 73 10 0.86,  seed=0.5, t=4},
-      {x=-1,  y=1,  radius=5, color=rgba 255 128 51 0.86, seed=(t |> toFloat |> sin) * 0.9, t=t%10},
-      {x=1,   y=0,   radius=5, color=rgba 111 40 40 0.5,  seed=0.03, t=9},
-      {x=1,   y=0,  radius=5, color=rgba 170 83 32 0.86,  seed=0.4 + (t |> toFloat |> sin) * 0.362, t=t%3},
-      {x=0.7, y=1,  radius=5, color=rgba 168 83 5 0.98,  seed=0.8, t=t%4},
+      {x=-3,  y=2,  radius=6, color=rgba 255 10 10 0.95, seed=0.05, t=6},
+      {x=2,   y=2,  radius=5, color=rgba 155 73 10 0.86, seed=0.5, t=4},
+      {x=-1,  y=1,  radius=5, color=rgba 255 98 51 0.86, seed=(t |> toFloat |> sin) * 0.9, t=t%10},
+      {x=1,   y=0,  radius=5, color=rgba 111 40 40 0.5,  seed=0.03, t=9},
+      {x=1,   y=0,  radius=5, color=rgba 170 83 32 0.86, seed=0.4 + (t |> toFloat |> sin) * 0.362, t=t%3},
+      {x=0.7, y=1,  radius=5, color=rgba 168 83 11 0.98, seed=0.8, t=t%4},
       {x=1,   y=0,  radius=5, color=rgba 177 72 17 0.85, seed=1.154, t=0},
       {x=-0.5, y=1, radius=5, color=rgba 189 20 17 0.85, seed=0.5, t=3}
     ]

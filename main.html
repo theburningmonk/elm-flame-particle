@@ -1811,261 +1811,272 @@ Elm.Main.make = function (_elm) {
    $Signal = Elm.Signal.make(_elm),
    $Time = Elm.Time.make(_elm),
    $Window = Elm.Window.make(_elm);
-   var makeParticle = function (n) {
+   var genParticles = function (t) {
+      return _L.fromArray([{_: {}
+                           ,color: A4($Color.rgba,
+                           255,
+                           10,
+                           10,
+                           0.95)
+                           ,radius: 6
+                           ,seed: 5.0e-2
+                           ,t: 6
+                           ,x: -3
+                           ,y: 2}
+                          ,{_: {}
+                           ,color: A4($Color.rgba,
+                           155,
+                           73,
+                           10,
+                           0.86)
+                           ,radius: 5
+                           ,seed: 0.5
+                           ,t: 4
+                           ,x: 2
+                           ,y: 2}
+                          ,{_: {}
+                           ,color: A4($Color.rgba,
+                           255,
+                           98,
+                           51,
+                           0.86)
+                           ,radius: 5
+                           ,seed: $Basics.sin($Basics.toFloat(t)) * 0.9
+                           ,t: A2($Basics._op["%"],t,10)
+                           ,x: -1
+                           ,y: 1}
+                          ,{_: {}
+                           ,color: A4($Color.rgba,
+                           111,
+                           40,
+                           40,
+                           0.5)
+                           ,radius: 5
+                           ,seed: 3.0e-2
+                           ,t: 9
+                           ,x: 1
+                           ,y: 0}
+                          ,{_: {}
+                           ,color: A4($Color.rgba,
+                           170,
+                           83,
+                           32,
+                           0.86)
+                           ,radius: 5
+                           ,seed: 0.4 + $Basics.sin($Basics.toFloat(t)) * 0.362
+                           ,t: A2($Basics._op["%"],t,3)
+                           ,x: 1
+                           ,y: 0}
+                          ,{_: {}
+                           ,color: A4($Color.rgba,
+                           168,
+                           83,
+                           11,
+                           0.98)
+                           ,radius: 5
+                           ,seed: 0.8
+                           ,t: A2($Basics._op["%"],t,4)
+                           ,x: 0.7
+                           ,y: 1}
+                          ,{_: {}
+                           ,color: A4($Color.rgba,
+                           177,
+                           72,
+                           17,
+                           0.85)
+                           ,radius: 5
+                           ,seed: 1.154
+                           ,t: 0
+                           ,x: 1
+                           ,y: 0}
+                          ,{_: {}
+                           ,color: A4($Color.rgba,
+                           189,
+                           20,
+                           17,
+                           0.85)
+                           ,radius: 5
+                           ,seed: 0.5
+                           ,t: 3
+                           ,x: -0.5
+                           ,y: 1}]);
+   };
+   var makeParticle = function (seed) {
       return function () {
-         var seed = $Random.initialSeed(n);
-         var _ = A2($Random.generate,
-         A2($Random.list,
-         2,
-         A2($Random.$float,-10,10)),
-         seed);
-         var seed$ = function () {
-            switch (_.ctor)
-            {case "_Tuple2":
-               switch (_._0.ctor)
-                 {case "::":
-                    switch (_._0._1.ctor)
-                      {case "::":
-                         switch (_._0._1._1.ctor)
-                           {case "[]": return _._1;}
-                           break;}
-                      break;}
-                 break;}
-            _U.badCase($moduleName,
-            "on line 71, column 29 to 87");
-         }();
-         var x = function () {
-            switch (_.ctor)
-            {case "_Tuple2":
-               switch (_._0.ctor)
-                 {case "::":
-                    switch (_._0._1.ctor)
-                      {case "::":
-                         switch (_._0._1._1.ctor)
-                           {case "[]": return _._0._0;}
-                           break;}
-                      break;}
-                 break;}
-            _U.badCase($moduleName,
-            "on line 71, column 29 to 87");
-         }();
-         var y = function () {
-            switch (_.ctor)
-            {case "_Tuple2":
-               switch (_._0.ctor)
-                 {case "::":
-                    switch (_._0._1.ctor)
-                      {case "::":
-                         switch (_._0._1._1.ctor)
-                           {case "[]": return _._0._1._0;}
-                           break;}
-                      break;}
-                 break;}
-            _U.badCase($moduleName,
-            "on line 71, column 29 to 87");
-         }();
-         var _ = A2($Random.generate,
-         A2($Random.list,
-         1,
-         A2($Random.$int,175,255)),
-         seed$);
-         var r = function () {
-            switch (_.ctor)
-            {case "_Tuple2":
-               switch (_._0.ctor)
-                 {case "::":
-                    switch (_._0._1.ctor)
-                      {case "[]": return _._0._0;}
-                      break;}
-                 break;}
-            _U.badCase($moduleName,
-            "on line 72, column 29 to 87");
-         }();
-         var seed$$ = function () {
-            switch (_.ctor)
-            {case "_Tuple2":
-               switch (_._0.ctor)
-                 {case "::":
-                    switch (_._0._1.ctor)
-                      {case "[]": return _._1;}
-                      break;}
-                 break;}
-            _U.badCase($moduleName,
-            "on line 72, column 29 to 87");
-         }();
-         var _ = A2($Random.generate,
-         A2($Random.list,
-         2,
-         A2($Random.$int,1,100)),
-         seed$$);
-         var b = function () {
-            switch (_.ctor)
-            {case "_Tuple2":
-               switch (_._0.ctor)
-                 {case "::":
-                    switch (_._0._1.ctor)
-                      {case "::":
-                         switch (_._0._1._1.ctor)
-                           {case "[]": return _._0._1._0;}
-                           break;}
-                      break;}
-                 break;}
-            _U.badCase($moduleName,
-            "on line 73, column 29 to 86");
-         }();
-         var g = function () {
-            switch (_.ctor)
-            {case "_Tuple2":
-               switch (_._0.ctor)
-                 {case "::":
-                    switch (_._0._1.ctor)
-                      {case "::":
-                         switch (_._0._1._1.ctor)
-                           {case "[]": return _._0._0;}
-                           break;}
-                      break;}
-                 break;}
-            _U.badCase($moduleName,
-            "on line 73, column 29 to 86");
-         }();
-         var seed$$$ = function () {
-            switch (_.ctor)
-            {case "_Tuple2":
-               switch (_._0.ctor)
-                 {case "::":
-                    switch (_._0._1.ctor)
-                      {case "::":
-                         switch (_._0._1._1.ctor)
-                           {case "[]": return _._1;}
-                           break;}
-                      break;}
-                 break;}
-            _U.badCase($moduleName,
-            "on line 73, column 29 to 86");
-         }();
-         var _ = A2($Random.generate,
-         A2($Random.list,
-         2,
-         A2($Random.$float,0,1)),
-         seed$$$);
-         var alpha = function () {
-            switch (_.ctor)
-            {case "_Tuple2":
-               switch (_._0.ctor)
-                 {case "::":
-                    switch (_._0._1.ctor)
-                      {case "::":
-                         switch (_._0._1._1.ctor)
-                           {case "[]": return _._0._0;}
-                           break;}
-                      break;}
-                 break;}
-            _U.badCase($moduleName,
-            "on line 74, column 31 to 89");
-         }();
-         var pSeed = function () {
-            switch (_.ctor)
-            {case "_Tuple2":
-               switch (_._0.ctor)
-                 {case "::":
-                    switch (_._0._1.ctor)
-                      {case "::":
-                         switch (_._0._1._1.ctor)
-                           {case "[]": return _._0._1._0;}
-                           break;}
-                      break;}
-                 break;}
-            _U.badCase($moduleName,
-            "on line 74, column 31 to 89");
-         }();
-         return {_: {}
-                ,color: A4($Color.rgba,
-                r,
-                g,
-                b,
-                alpha)
-                ,radius: 5
-                ,seed: pSeed
-                ,x: x
-                ,y: y};
+         var $ = A2($Random.generate,
+         A2($Random.$float,-10,10),
+         seed),
+         x = $._0,
+         seed1 = $._1;
+         var $ = A2($Random.generate,
+         A2($Random.$float,-5,5),
+         seed1),
+         y = $._0,
+         seed2 = $._1;
+         var $ = A2($Random.generate,
+         A2($Random.$int,188,255),
+         seed2),
+         r = $._0,
+         seed3 = $._1;
+         var $ = A2($Random.generate,
+         A2($Random.$int,30,80),
+         seed3),
+         g = $._0,
+         seed4 = $._1;
+         var $ = A2($Random.generate,
+         A2($Random.$int,10,50),
+         seed4),
+         b = $._0,
+         seed5 = $._1;
+         var $ = A2($Random.generate,
+         A2($Random.$float,0.2,0.8),
+         seed5),
+         alpha = $._0,
+         seed6 = $._1;
+         var $ = A2($Random.generate,
+         A2($Random.$int,1,5),
+         seed6),
+         radius = $._0,
+         seed7 = $._1;
+         var $ = A2($Random.generate,
+         A2($Random.$float,0.1,1),
+         seed7),
+         pSeed = $._0,
+         seed8 = $._1;
+         var particle = {_: {}
+                        ,color: A4($Color.rgba,
+                        r,
+                        g,
+                        b,
+                        alpha)
+                        ,radius: 5
+                        ,seed: pSeed
+                        ,t: 0
+                        ,x: x
+                        ,y: y};
+         return {ctor: "_Tuple2"
+                ,_0: particle
+                ,_1: seed8};
       }();
    };
-   var generate = F3(function (t,
-   n,
+   var spawn = F2(function (t,
    state) {
       return function () {
-         switch (n)
-         {case 0: return state;}
-         return A3(generate,
-         t,
-         n - 1,
-         A2($List._op["::"],
-         makeParticle($Basics.floor(t) + n),
-         state));
+         var $ = A2($Random.generate,
+         A2($Random.$int,1,5),
+         state.seed),
+         n = $._0,
+         seed = $._1;
+         var $ = A3($List.foldl,
+         F2(function (_v0,_v1) {
+            return function () {
+               switch (_v1.ctor)
+               {case "_Tuple2":
+                  return function () {
+                       return function () {
+                          var $ = makeParticle(_v1._1),
+                          newP = $._0,
+                          newSeed = $._1;
+                          return {ctor: "_Tuple2"
+                                 ,_0: A2($List._op["::"],
+                                 newP,
+                                 _v1._0)
+                                 ,_1: newSeed};
+                       }();
+                    }();}
+               _U.badCase($moduleName,
+               "between lines 74 and 75");
+            }();
+         }),
+         {ctor: "_Tuple2"
+         ,_0: _L.fromArray([])
+         ,_1: seed},
+         _L.range(1,n)),
+         randParticles = $._0,
+         newSeed = $._1;
+         var newParticles = genParticles($Basics.floor(t));
+         return _U.replace([["particles"
+                            ,$List.concat(_L.fromArray([newParticles
+                                                       ,randParticles
+                                                       ,state.particles]))]
+                           ,["seed",newSeed]],
+         state);
       }();
    });
-   var update = F2(function (t,
-   state) {
-      return $List.map(function (p) {
-         return function () {
-            var $ = $Color.toRgb(p.color),
-            red = $.red,
-            green = $.green,
-            blue = $.blue,
-            alpha = $.alpha;
-            var newR = red + $Basics.floor(F2(function (x,
-            y) {
-               return x * y;
-            })(40)($Basics.sin(t * p.seed)));
-            var newG = green + $Basics.floor(F2(function (x,
-            y) {
-               return x * y;
-            })(33)($Basics.sin(t * p.seed)));
-            var newB = blue;
-            var newA = (alpha - 1.6e-2 * p.seed) * 0.97;
-            var newColor = A4($Color.rgba,
-            newR,
-            newG,
-            newB,
-            newA);
-            return _U.replace([["x"
-                               ,p.x - $Basics.sin(t * 0.436)]
-                              ,["y",p.y + 1]
-                              ,["radius",p.radius - 3.0e-2]
-                              ,["color",newColor]],
-            p);
-         }();
-      })(state);
-   });
+   var update = function (state) {
+      return function () {
+         var newParticles = $List.map(function (p) {
+            return function () {
+               var $ = $Color.toRgb(p.color),
+               red = $.red,
+               green = $.green,
+               blue = $.blue,
+               alpha = $.alpha;
+               var newR = red + $Basics.floor(F2(function (x,
+               y) {
+                  return x * y;
+               })(50)($Basics.sin($Basics.toFloat(p.t) * p.seed)));
+               var newG = green + $Basics.floor(F2(function (x,
+               y) {
+                  return x * y;
+               })(25)($Basics.sin($Basics.toFloat(p.t) * p.seed)));
+               var newB = blue;
+               var newA = (alpha - 1.4e-2 * p.seed) * 0.97;
+               var newColor = A4($Color.rgba,
+               newR,
+               newG,
+               newB,
+               newA);
+               return _U.replace([["x"
+                                  ,p.x - $Basics.sin($Basics.toFloat(p.t) * 0.386)]
+                                 ,["y",p.y + 1]
+                                 ,["radius",p.radius - 3.0e-2]
+                                 ,["color",newColor]
+                                 ,["t",p.t + 1]],
+               p);
+            }();
+         })(state.particles);
+         return _U.replace([["particles"
+                            ,newParticles]],
+         state);
+      }();
+   };
    var prune = function (state) {
-      return $List.filter(function (p) {
-         return function () {
-            var $ = $Color.toRgb(p.color),
-            red = $.red,
-            green = $.green,
-            blue = $.blue,
-            alpha = $.alpha;
-            return _U.cmp(alpha,0) > 0;
-         }();
-      })(state);
+      return function () {
+         var newParticles = $List.filter(function (p) {
+            return function () {
+               var $ = $Color.toRgb(p.color),
+               red = $.red,
+               green = $.green,
+               blue = $.blue,
+               alpha = $.alpha;
+               return _U.cmp(alpha,
+               0) > 0 && _U.cmp(p.radius,
+               0) > 0;
+            }();
+         })(state.particles);
+         return _U.replace([["particles"
+                            ,newParticles]],
+         state);
+      }();
    };
-   var display = F2(function (_v67,
+   var display = F2(function (_v6,
    state) {
       return function () {
-         switch (_v67.ctor)
+         switch (_v6.ctor)
          {case "_Tuple2":
             return function () {
                  var content = $List.map(function (p) {
                     return $Graphics$Collage.move({ctor: "_Tuple2"
                                                   ,_0: p.x
                                                   ,_1: p.y})($Graphics$Collage.filled(p.color)($Graphics$Collage.circle(p.radius)));
-                 })($Debug.watch("State")(state));
+                 })($Debug.watch("Particles")(state.particles));
                  var background = $Graphics$Collage.filled($Color.black)(A2($Graphics$Collage.rect,
-                 $Basics.toFloat(_v67._0),
-                 $Basics.toFloat(_v67._1)));
+                 $Basics.toFloat(_v6._0),
+                 $Basics.toFloat(_v6._1)));
                  return A3($Graphics$Collage.collage,
-                 _v67._0,
-                 _v67._1,
+                 _v6._0,
+                 _v6._1,
                  A2($List._op["::"],
                  background,
                  content));
@@ -2076,31 +2087,38 @@ Elm.Main.make = function (_elm) {
    });
    var step = F2(function (t,
    state) {
-      return A2(generate,
-      t,
-      15)(update(t)(prune(state)));
+      return spawn(t)(update(prune(state)));
    });
-   var defaultState = _L.fromArray([]);
-   var Particle = F5(function (a,
+   var defaultState = {_: {}
+                      ,particles: _L.fromArray([])
+                      ,seed: $Random.initialSeed(42)};
+   var State = F2(function (a,b) {
+      return {_: {}
+             ,particles: a
+             ,seed: b};
+   });
+   var Particle = F6(function (a,
    b,
    c,
    d,
-   e) {
+   e,
+   f) {
       return {_: {}
              ,color: d
              ,radius: c
              ,seed: e
+             ,t: f
              ,x: a
              ,y: b};
    });
    var ticks = A3($Signal.foldp,
-   F2(function (_v71,n) {
+   F2(function (_v10,n) {
       return function () {
          return n + 1;
       }();
    }),
    0,
-   $Time.fps(8));
+   $Time.fps(20));
    var state = A3($Signal.foldp,
    step,
    defaultState,
@@ -2113,6 +2131,7 @@ Elm.Main.make = function (_elm) {
    _elm.Main.values = {_op: _op
                       ,ticks: ticks
                       ,Particle: Particle
+                      ,State: State
                       ,defaultState: defaultState
                       ,step: step
                       ,state: state
@@ -2120,8 +2139,9 @@ Elm.Main.make = function (_elm) {
                       ,main: main
                       ,prune: prune
                       ,update: update
-                      ,generate: generate
-                      ,makeParticle: makeParticle};
+                      ,spawn: spawn
+                      ,makeParticle: makeParticle
+                      ,genParticles: genParticles};
    return _elm.Main.values;
 };Elm.Maybe = Elm.Maybe || {};
 Elm.Maybe.make = function (_elm) {
