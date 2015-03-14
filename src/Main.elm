@@ -11,7 +11,7 @@ import Window
 import Debug
 
 ticks : Signal Float
-ticks = Signal.foldp (\_ n -> n + 1) 0 (Time.fps 20)
+ticks = Signal.foldp (\_ n -> n + 1) 0 (Time.fps 10)
 
 type alias Particle = {x:Float, y:Float, radius:Float, color:Color, seed:Float, t:Int}
 type alias State = {particles:List Particle, seed:Random.Seed}
@@ -58,7 +58,7 @@ update state =
           newA = (alpha - 0.014 * p.seed) * 0.97
           newColor = rgba newR newG newB newA
       in {p | x <- p.x - sin (toFloat p.t * 0.386),
-              y <- p.y + 1,
+              y <- p.y + 1.5,
               radius <- p.radius - 0.03,
               color  <- newColor,
               t <- p.t + 1})
